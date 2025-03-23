@@ -2,13 +2,13 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: 'https://dgs.herokuapp.com', // Your Flask API
+  baseURL: 'https://dgs-f45326cac071.herokuapp.com/',
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-// Add token to requests if logged in
+// Automatically add JWT token to requests
 apiClient.interceptors.request.use((config) => {
   const token = localStorage.getItem('access_token');
   if (token) {
