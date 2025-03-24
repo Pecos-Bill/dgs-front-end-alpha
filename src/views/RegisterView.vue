@@ -12,6 +12,7 @@
         <button type="submit">Register</button>
       </form>
       <p>{{ message }}</p>
+      <p v-if="error" style="color: red">{{ error }}</p>
     </div>
   </template>
   
@@ -37,11 +38,12 @@
     async register() {
       try {
         const response = await apiClient.post('/register', this.form);
+        console.log('Success:', response.data);
         this.message = response.data.message;  // "User created successfully"
         this.error = '';
-        // Optional: Clear form or redirect
         this.form = { email: '', password: '', first_name: '', last_name: '', phone: '', address: '' };
       } catch (err) {
+        console.error('Error:', err.response || err);
         this.error = err.response?.data?.error || 'Registration failed';
         this.message = '';
       }
