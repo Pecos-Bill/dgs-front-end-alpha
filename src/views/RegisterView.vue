@@ -17,7 +17,7 @@
   </template>
   
   <script>
-  import apiClient from '../api';
+  import apiClient from '../api.js';
   
   export default {
     data() {
@@ -36,16 +36,17 @@
     },
     methods: {
     async register() {
-      try {
-        const response = await apiClient.post('/register', this.form);
-        console.log('Success:', response.data);
-        this.message = response.data.message;  // "User created successfully"
-        this.error = '';
-        this.form = { email: '', password: '', first_name: '', last_name: '', phone: '', address: '' };
-      } catch (err) {
-        console.error('Error:', err.response || err);
-        this.error = err.response?.data?.error || 'Registration failed';
-        this.message = '';
+        console.log('Submitting form:', this.form);
+        try {
+            const response = await apiClient.post('/register', this.form);
+            console.log('API Success:', response.data);
+            this.message = response.data.message;  // "User created successfully"
+            this.error = '';
+            this.form = { email: '', password: '', first_name: '', last_name: '', phone: '', address: '' };
+        }   catch (err) {
+            console.error('API Error:', err.response?.status, err.response?.data || err.message);
+            this.error = err.response?.data?.error || 'Registration failed';
+            this.message = '';
       }
     },
   },
