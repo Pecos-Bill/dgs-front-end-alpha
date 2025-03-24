@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: 'https://dgs-d4285877c95d.herokuapp.com/',
+  baseURL: 'dallasgoonersociety.com/',
   headers: {
     'Content-Type': 'application/json',
   },
