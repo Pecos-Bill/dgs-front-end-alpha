@@ -1,7 +1,9 @@
-import { createApp } from 'vue';
+import { createApp } from 'vue'; // Vue 3
 import App from './App.vue';
-import router from './router'; // Import the router
+import router from './router';
+import './assets/global.css';
 
 const app = createApp(App);
-app.use(router); // Tell Vue to use the router
+app.use(router);
 app.mount('#app');
+
