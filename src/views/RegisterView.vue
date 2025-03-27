@@ -1,7 +1,7 @@
 
 <template>
     <div class="register">
-      <app-header /> <!-- Must be here -->
+      <app-header /> 
       <h2>Register</h2>
       <form @submit.prevent="register" class="register-form">
         <input v-model="form.email" type="email" placeholder="Email" required />
